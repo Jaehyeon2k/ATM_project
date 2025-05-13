@@ -13,8 +13,14 @@ public class BankSystem {
                 System.out.println("2. 로그인");
                 System.out.println("3. 종료");
                 System.out.print(">> ");
-                int choice = scanner.nextInt();
-                scanner.nextLine();
+
+                int choice;
+                try {
+                    choice = Integer.parseInt(scanner.nextLine());  // 안전하게 문자열로 받고 변환
+                } catch (NumberFormatException e) {
+                    System.out.println("숫자만 입력하세요!");
+                    continue;  // 메뉴 다시 출력
+                }
 
                 switch (choice) {
                     case 1 -> signUp();
@@ -110,8 +116,13 @@ public class BankSystem {
             }
 
             System.out.print(">> ");
-            int choice = scanner.nextInt();
-            scanner.nextLine();
+            int choice;
+            try {
+                choice = Integer.parseInt(scanner.nextLine());  // 안전하게 문자열로 받고 변환
+            } catch (NumberFormatException e) {
+                System.out.println("숫자만 입력하세요!");
+                continue;  // 메뉴 다시 출력
+            }
 
             switch (choice) {
                 case 1 -> deposit();

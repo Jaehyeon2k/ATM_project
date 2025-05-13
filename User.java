@@ -37,6 +37,12 @@ public class User {
     }
 
     public void increaseFailCount() {
+        if (id.equals("admin")) {
+            // 관리자 계정은 절대 잠기지 않게 처리
+            System.out.println("관리자 계정은 잠기지 않습니다.");
+            return;
+        }
+
         loginFailCount++;
         if (loginFailCount >= 3) {
             locked = true;
